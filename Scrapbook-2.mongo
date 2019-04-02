@@ -1,0 +1,39 @@
+/* db.movies.find({})
+
+db.movies.findOne({"released": 5})
+
+
+
+db.movies.insertMany([
+    { "_id":1,"title" : "Top Gun", "year" : 1986 },
+{ "title" : "Back to the Future", "year" : 1985 },
+{  "title" : "Sixteen Candles", "year" : 1984 },
+{  "title" : "The Terminator", "year" : 1984 },
+{  "title" : "Scarface", "year" : 1983 }
+],{"ordered":false})
+
+
+db.movies.drop()
+
+
+db.users.insertOne({
+    "_id" : ObjectId("4b2b9f67a1f631733d917a7a"),
+    "name" : "joe",
+    "friends" : 32,
+    "enemies" : 2
+})
+
+
+db.users.find()
+
+ */
+
+db.analytics.insertOne({
+    "url":"www.example.com",
+    "pagevisit":10
+})
+
+
+db.analytics.updateOne({"url":"www.example.com"},{"$inc":{"pagevisit":1}})
+
+db.analytics.find({})

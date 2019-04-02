@@ -1,0 +1,11 @@
+db.users.updateOne({"name":"joe"},{"$set":{"favouritebook":"War and Peace"}})
+
+
+db.users.updateOne({"name":"joe"},{"$unset":{"favouritebook":1}})
+
+
+
+db.users.updateOne({"name":"joe"},{"$set":{"relationship.friends":35}})
+
+
+

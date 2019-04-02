@@ -1,0 +1,3 @@
+var a=db.users.find({"name":"joe"});
+
+

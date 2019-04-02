@@ -1,0 +1,97 @@
+/* db.blog.posts.insertOne(
+{
+    "_id" : ObjectId("4b2d75476cc613d5ee930164"),
+    "title" : "A blog post",
+    "content" : "..."
+}
+) */
+
+
+/* db.blog.posts.updateOne({"title":"A blog post"},
+    {"$push":{"comments":{
+        "name":"jssoe","email":"dsss@gmail.com","content":"nice post."
+    }}}
+) */
+
+
+
+
+//db.blog.posts.find()
+
+
+/* db.stock.ticker.insertOne({"_id" : "GOOG"})
+
+db.stock.ticker.updateOne({"_id" : "GOOG"},
+ {"$push" : {"hourly" : {"$each" : [562.776, 562.790, 559.123]}}})
+
+ */
+
+// db.movies.insert({"genre":"horror"})
+
+
+/*  db.movies.updateOne({"genre":"horror"},{"$push":{
+     "top10":{
+         "$each": [{"name" : "Nightmare on Elm Street",
+                                    "rating" : 7.6},
+                                   {"name" : "Saw", "rating" : 9.3}],
+         "$slice":10,
+         "$sort":-1
+     }
+ }})
+
+//db.movies.updateMany({})
+
+
+
+db.movies.find()
+ */
+
+/* db.users.insertOne(
+{
+    "_id" : ObjectId("4b2d75476cc613d5ee930164"),
+    "username" : "joe",
+    "emails" : [
+        "joe@example.com",
+        "joe@gmail.com",
+        "joe@yahoo.com"
+    ]
+})
+ *//* 
+
+db.users.updateOne({
+    "name":"joe"
+},{
+    "$addToSet":{"email":"jo1e@yahoo.com"}
+}
+
+)
+
+
+db.users.updateOne({"_id" : ObjectId("4b2d75476cc613d5ee930164")}, {"$addToSet" :
+ {"emails" : {"$each" :
+  ["joe@php.net", "joe@example.com", "joe@python.org"]}}})
+
+
+ */
+
+/* db.users.updateOne({"name":"joe"},{"$pop":{"emails":{"$each":["joe@example.com", "joe@python.org"]}}})
+
+
+ db.blog.posts.updateMany({"comments.author" : "Jim"},
+ {"$set" : {"comments.$.author" : "Jimmy"}})
+
+
+ db.blog.posts.find({}) 
+
+
+   db.analytics.updateOne({"url" : "/blog"}, {"$inc" : {"pageviews" : 1}}, {"upsert" : true})
+ */
+    db.processes.insertOne({"status":"READY"})
+
+
+    db.processes.findOneAndUpdate({"status" : "READY"},
+                                   {"$set" : {"status" : "RUNNING"}},
+                                   {"sort" : {"priority" : -1},
+                                    "returnNewDocument": true})
+
+    db.process.update({"_id" : ps._id}, {"$set" : {"status" : "DONE"}})

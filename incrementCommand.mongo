@@ -1,0 +1,21 @@
+/* 
+
+db.shares.insertMany([
+    {
+        "user":"akshay",
+        "stock_count":43
+    },
+    {
+        "user":"dev",
+        "stock_count":4
+    }
+])
+//decrement
+db.shares.updateOne({"user":"akshay"},
+{"$inc":{"stock_count":-11}})
+
+//increment
+db.shares.updateOne({"user":"dev"},{"$inc":{"stock_count":11}})
+ */
+
+db.shares.find({})
