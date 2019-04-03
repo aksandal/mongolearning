@@ -57,7 +57,7 @@ db.movies.find()
     ]
 })
  *//* 
-
+//using set for insertion and deletion from array
 db.users.updateOne({
     "name":"joe"
 },{
@@ -74,7 +74,9 @@ db.users.updateOne({"_id" : ObjectId("4b2d75476cc613d5ee930164")}, {"$addToSet" 
 
  */
 
-/* db.users.updateOne({"name":"joe"},{"$pop":{"emails":{"$each":["joe@example.com", "joe@python.org"]}}})
+/*
+//not working
+ db.users.updateOne({"name":"joe"},{"$pop":{"emails":{"$each":["joe@example.com", "joe@python.org"]}}})
 
 
  db.blog.posts.updateMany({"comments.author" : "Jim"},
@@ -83,12 +85,14 @@ db.users.updateOne({"_id" : ObjectId("4b2d75476cc613d5ee930164")}, {"$addToSet" 
 
  db.blog.posts.find({}) 
 
-
+//to create document with condition and update query if no search result found
    db.analytics.updateOne({"url" : "/blog"}, {"$inc" : {"pageviews" : 1}}, {"upsert" : true})
  */
     db.processes.insertOne({"status":"READY"})
 
 
+//prevents race condtion from happening as read and update are both perform in database heap only
+//returnNewDocument:true returns the newly update document
     db.processes.findOneAndUpdate({"status" : "READY"},
                                    {"$set" : {"status" : "RUNNING"}},
                                    {"sort" : {"priority" : -1},

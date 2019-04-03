@@ -1,0 +1,27 @@
+/* 
+ db.food.insertOne({"_id" : 1, "fruit" : ["apple", "banana", "peach"]})
+ db.food.insertOne({"_id" : 2, "fruit" : ["apple", "kumquat", "orange"]})
+ db.food.insertOne({"_id" : 3, "fruit" : ["cherry", "banana", "apple"]})
+ */
+
+
+ //db.food.find({"fruit":"cherry"}).sort({"fruit":-1})
+
+ db.food.find({"fruit":{"$all":["banana","apple"]}})
+        //.sort({"fruit":1})
+
+
+db.food.find({"fruit":[
+      "cherry",
+      "banana",
+      "apple"
+    ]})
+
+db.food.find({"fruit" : {"$size" : 3}})
+
+
+ db.food.update({}, {"$push" : {"fruit" : "strawberry"}, "$inc" : {"size" : 1}})
+
+ db.blog.posts.find({"comments" : {"$slice" : [23, 10]}})
+ 
+ db.blog.posts.findOne({}, {"comments" : {"$slice" : [23, 10]}})

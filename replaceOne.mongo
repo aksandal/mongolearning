@@ -1,3 +1,8 @@
 var a=db.users.find({"name":"joe"});
 
 
+joe.relationship={"friends":32,"enemies":10};
+delete joe.friends;
+delete joe.enemies;
+db.users.replaceOne({"name":"joe"},joe)
+db.users.find({})

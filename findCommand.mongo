@@ -1,0 +1,47 @@
+
+//return following key value pairs only
+//db.shares.find({"user":"akshay"},{"user":1})
+
+
+//exclude key value pairs
+//db.shares.find({},{"user":0})
+
+//Queries can go beyond the exact matching described in the previous section; they can match more complex criteria, such as ranges, OR-clauses, and negation.
+
+db.users.insertMany([
+    {
+    "name": "akshay",
+  "relationship": {
+    "friends": 35,
+    "enemies": 10
+  },
+    "age":23
+},    {
+  "name": "god",
+  "relationship": {
+    "friends": 35,
+    "enemies": 10
+  },
+    "age":65
+},
+{
+  "name": "sandal",
+  "relationship": {
+    "friends": 35,
+    "enemies": 10
+  },
+    "age":76
+}
+])
+
+
+db.users.find({age:{"$lt": 70,"$gt": 30}})
+
+
+/* > age=34
+34
+> db.users.find({age:{"$lt":age}})
+{ "_id" : ObjectId("5ca4433fd351ea05d4d1fe24"), "name" : "akshay", "relationship" : { "friends" : 35, "enemies" : 10 }, "age" : 23 }
+ */
+
+  db.users.find({"name" : {"$ne" : "joe"}})

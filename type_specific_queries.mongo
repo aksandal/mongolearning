@@ -1,0 +1,46 @@
+
+/* db.c.insertMany([
+    { "_id" : ObjectId("4ba0f0dfd22aa494fd523621"), "y" : null },
+    { "_id" : ObjectId("4ba0f0dfd22aa494fd523622"), "y" : 1 },
+    { "_id" : ObjectId("4ba0f148d22aa494fd523623"), "y" : 2 }
+])
+ */
+db.c.find({"z":null})
+
+db.c.find({"y":{"$eq":null,"$exists":true}})
+
+//regex
+
+
+//not working 
+db.raffle.find({"user_id":{"$regex":/mat/,"$option":1}})
+
+//working 
+db.raffle.find({"user_id":/mat/})
+// confusion in above statements
+
+db.raffle.find({"ticket_no":{"$regex":/435/}})
+
+
+//db.raffle.find({}).limit(3)
+
+
+db.products.insertMany([
+    { "_id" : 100, "sku" : "abc123", "description" : "Single line description." },
+    { "_id" : 101, "sku" : "abc789", "description" : "First line\\nSecond line" },
+    { "_id" : 102, "sku" : "xyz456", "description" : "Many spaces before     line" },
+    { "_id" : 103, "sku" : "xyz789", "description" : "Multiple\\nline description" }
+])
+
+
+//for some reason the regex is not working on numbers 
+db.products.find({"sku":{"$regex":/789$/}})
+
+//MongoDB can leverage an index for queries on prefix regular        expressions (e.g., /^joey/).        Indexes cannot be used for case-insensitive        searches (/^joey/i).
+
+//Regular expressions can also match themselves. Very few people insert regular expressions into the database, but if you insert one, you can match it with itself:
+
+
+ db.food.insertOne({"_id" : 1, "fruit" : ["apple", "banana", "peach"]})
+ db.food.insertOne({"_id" : 2, "fruit" : ["apple", "kumquat", "orange"]})
+ db.food.insertOne({"_id" : 3, "fruit" : ["cherry", "banana", "apple"]})
